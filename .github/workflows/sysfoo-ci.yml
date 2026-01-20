@@ -8,9 +8,9 @@ jobs:
       - name: sysfoo-ci
         run: echo "Welcome to sysfoo!!"
       - name: Code Checkout
-        uses: actions/checkout@v6
+        uses: [actions/checkout@v4](https://github.com)
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: [actions/setup-java@v4](https://github.com)
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -27,3 +27,11 @@ jobs:
 
       - name: View artifact
         run: ls -lart target
+
+      # ADD THIS STEP BELOW
+      - name: Upload WAR File for Download
+        uses: [actions/upload-artifact@v4](https://github.com)
+        with:
+          name: sysfoo-war-file
+          path: target/*.war
+          retention-days: 5
